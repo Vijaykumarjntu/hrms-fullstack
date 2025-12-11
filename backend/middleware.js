@@ -9,7 +9,7 @@ const authenticate = async (req, res, next) => {
       return res.status(401).json({ error: 'Access denied. No token provided.' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token,'secret');
     const user = await User.findByPk(decoded.userId, {
       include: [{
         model: Organization,

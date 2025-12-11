@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({
       message: 'Organization and user created successfully',
-      token,
+      // token,
       user: { id: user.id, email: user.email },
       organization: { id: organization.id, name: organization.name }
     });
@@ -87,7 +87,7 @@ router.post('/login', async (req, res) => {
       user_id: user.id,
       details: { email }
     });
-    const jwtSecret = process.env.JWT_SECRET || 'fallback_dev_secret_only';
+    const jwtSecret = process.env.JWT_SECRET || 'secret';
     
     // Generate JWT token
     const token = jwt.sign(
